@@ -1,0 +1,44 @@
+자유주제
+오라클을 연동하여 CRUD를 기본으로 하는 프로그램을 제작하시오.
+기간 : 월요일 4교시까지. 발표없음. 제출은 소스파일을  word파일에 작성함. 개별제출.
+
+조별 과제 진행순서
+1. 오늘 소스 파일 분석
+
+   분석1. 개발환경
+   :JVM(java8-eclipse), DBMS(sql-sqldeveloper)
+
+   분석2. dao dto역활
+   :DAO-Data Access Object 데이터베이스에 접근하는 객체
+    DTO-Data Transfer Object 데이터베이스에 데이터를 전송하는 객체(하나의 튜플을)
+
+   분석3. 클래스 설계 분석
+   :1.DAO-GoodPlaceDAO :맛집 정보를 DB에 연결
+           -GooaAttachDAO :댓글 정보를 DB에 연결
+    2.DTO-GoodAttach :맛집 댓글 저장 양식
+           -GoodPlaceDTO :맛집 정보 저장 양식
+    3.main-Main :프로그램을 실행
+    4.manager-GoodPlaceADM :맛집관리
+
+   분석4. 패키지란 무엇인가?
+   :클래스들의 모음집
+
+
+   분석5. ojdbc란 무엇인가?
+   :다른 프로그램 간에 연동하려면 드라이버를 build하는데 oracle에서 제공하는 드라이버가 ojdbc이다.
+
+   분석6. 맛집을 등록하는 과정을 시작메서드 부터 설명하시오
+   : main() ->GoodPlaceADM생성자 실행->메뉴에서 번호선택->1.add()->DTO에 값 저장해서 insert()호출->DAO의 insert실행->DB에 저장
+                                                                             
+   분석7. 맛집의 정보를 보는 과정을 시작 메서드 부터 설명하시오.
+   
+
+   분석8. statement와 preparedstatement의 공통점과 차이점을 설명하시오 
+   :공통점은 자바의 sql문을 DB에 실행 시킬수있는 메서드 차이점 statement는 가독성이 좋지 않다 간단한 메게 변수를 넣지 않은 쿼리에 사용되고  preparedstatement이건 메게 변수를 사용할떄 쓸수있따
+   분석9. 매핑이란 무엇인가?
+   :자바와 DB간의 데이터를 전달하고 유지한다
+   분석10. ResultSet 객체에 대해서 설명하시오.
+             이 객체를 어떻게 사용했는지 설명하시오.
+   :ResultSet는 excuteQuery의 값을 저장할수있는 객체이다
+   :DB의 데이터를 excutQuery를 통해 주는 데이터를 자바로 받기 위해 사용했다 그래서 수정 삭제 입력 메서드에는 사용하지않는다
+2. 조별 자유주제

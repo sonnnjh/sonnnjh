@@ -1,0 +1,140 @@
+# 조별과제
+
+1. 다음 요구사항을 분석하여 데이터베이스 시스템을 구축하시오.
+
+과제 : 
+이번 프로젝트는 상품입출고 데이터베이스를 구축합니다.
+상품은 상품 번호가 있습니다.. 상품 번호는 회사명+번호를 구성됩니다
+회사명은 HM이고 번호는 001부터 999번까지 입니다.
+상품은 담당자를 기록합니다.
+수량이 있으며 수량은 1부터 100까지 입니다.
+등록일이 있습니다. 등록일은 년월일시분초를 저장합니다.
+창고별로 상품을 등록하고 있으며, 창고는 창고1, 창고2,창고3 3개입니다.
+
+
+결과물  :  조별 1개 ppt
+제목, 요구사항정리, 테이블명세서, 쿼리작성, 구축된 데이터베이스 증빙
+제목은 : 상품입출고 데이터 베이스 구축 제안서
+구글에 검색하여서 제안서에 대한 다양한 자료를 수집하여 ppt를 작성해 보세요.
+
+
+
+create table goods(
+goods_num varchar2(5) primary key,
+goods_name varchar2(10),
+goods_cnt number,
+goods_manager varchar2(20),
+goods_indate timestamp default sysdate,
+goods_storage varchar(5) check (goods_storage in ('창고1','창고2','창고3'))
+);
+
+create table goods1(
+goods_num varchar2(5) primary key,
+goods_name varchar2(10) not null,
+goods_cnt number check (goods_cnt between 1 and 100),
+goods_manager varchar2(20),
+goods_indate timestamp default sysdate,
+goods_storage varchar(5) check (goods_storage in ('창고1','창고2','창고3'))
+);
+
+create table goods2(
+goods_num varchar2(5) constraint goods2PK primary key,
+goods_name varchar2(10) not null,
+goods_cnt number constraint goods2_cnt_chk check (goods_cnt between 1 and 100),
+goods_manager varchar2(20),
+goods_indate timestamp default sysdate,
+goods_storage varchar(5) constraint goods2_srorage_chk check (goods_storage in ('창고1','창고2','창고3'))
+);
+1. insert into goods values('HM001','펜',10,'홍길동',default,'창고1');
+2. insert into goods values('HM002','볼펜',10,'홍길동',default,'창고2');
+3. insert into goods values('HM002','지우개',10,'일지매',default,'창고2');
+4. insert into goods values('HM003','면봉',5,'일지매','2019-01-20','창고2');
+5. insert into goods values('HM004','티슈',5,'일지매',2019-01-20,'창고2');
+6. insert into goods values('HM005','물티슈',15,'홍길동',default,'창고4');
+
+
+실습과정
+
+SQL> select * from goods;
+
+선택된 레코드가 없습니다.
+
+SQL> insert into goods values('HM001','펜',10,'홍길동',default,'창고1');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from goods;
+
+GOODS GOODS_NAME  GOODS_CNT GOODS_MANAGER
+----- ---------- ---------- --------------------
+GOODS_INDATE
+---------------------------------------------------------------------------
+GOODS
+-----
+HM001 펜                 10 홍길동
+24/01/30 11:01:27.000000
+창고1
+
+
+SQL> insert into goods values('HM002','볼펜',10,'홍길동',default,'창고2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> select * from goods;
+
+GOODS GOODS_NAME  GOODS_CNT GOODS_MANAGER
+----- ---------- ---------- --------------------
+GOODS_INDATE
+---------------------------------------------------------------------------
+GOODS
+-----
+HM001 펜                 10 홍길동
+24/01/30 11:01:27.000000
+창고1
+
+HM002 볼펜               10 홍길동
+24/01/30 11:01:43.000000
+창고2
+
+GOODS GOODS_NAME  GOODS_CNT GOODS_MANAGER
+----- ---------- ---------- --------------------
+GOODS_INDATE
+---------------------------------------------------------------------------
+GOODS
+-----
+
+
+SQL> insert into goods values('HM002','지우개',10,'일지매',default,'창고2');
+insert into goods values('HM002','지우개',10,'일지매',default,'창고2')
+*
+1행에 오류:
+ORA-00001: 무결성 제약 조건(SYSTEM.SYS_C0011055)에 위배됩니다
+
+
+SQL> insert into goods values('HM003','면봉',5,'일지매','2019-01-20','창고2');
+
+1 개의 행이 만들어졌습니다.
+
+SQL> insert into goods values('HM004','티슈',5,'일지매',2019-01-20,'창고2');
+insert into goods values('HM004','티슈',5,'일지매',2019-01-20,'창고2')
+                                                          *
+1행에 오류:
+ORA-00932: 일관성 없는 데이터 유형: TIMESTAMP이(가) 필요하지만 NUMBER임
+
+
+SQL> insert into goods values('HM005','물티슈',15,'홍길동',default,'창고4');
+insert into goods values('HM005','물티슈',15,'홍길동',default,'창고4')
+*
+1행에 오류:
+ORA-02290: 체크 제약조건(SYSTEM.SYS_C0011054)이 위배되었습니다
+
+
+SQL>
+
+
+
+
+
+
+
+

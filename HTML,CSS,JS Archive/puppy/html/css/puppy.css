@@ -1,0 +1,65 @@
+
+#brand_name{
+    color: rgb(133, 109, 87);
+    margin-left: 30px;
+    font-family: Pretendard ExtraBold;
+    font-size: 30px;
+}
+.nav-link{
+    color: rgb(133, 109, 87);
+    margin-left: 10px;
+    font-family: Pretendard ExtraBold;
+    font-size: 20px;
+}
+#center_text_1{
+    position: absolute;
+    left: 200px;
+    bottom: 700px;
+    font-family: Pretendard ExtraBold;
+    color: rgb(107, 92, 73);
+    font-size: 80px;
+    /* border: 3px dotted black; */
+}
+#center_text_2{
+    position: absolute;   
+    right: 400px;
+    bottom: 650px;
+    font-family: Pretendard ExtraBold;
+    color: rgb(107, 92, 73);
+    font-size: 40px;
+}
+#main_img{
+    padding-top: 300px;
+    width: 100%;
+}
+#footer{
+    background-color: rgb(242, 242, 242);
+    height: 200px;
+    text-align: center;
+    padding-top: 20px;
+}
+#footer_img{
+    padding-top: 20px;
+    width: 80%;
+}
+.footer_text{
+    margin-top: 20px;
+}
+#footer_left{
+    padding-right: 280px;
+    font-family:Pretendard ExtraBold;
+    color: rgb(133, 109, 87);
+    font-size: 20px;
+}
+#footer_center{
+    text-align: center;
+    font-family:Pretendard ExtraBold;
+    color: rgb(133, 109, 87);
+    font-size: 20px;
+}
+#footer_right{
+    padding-left: 320px;
+    font-family:Pretendard ExtraBold;
+    color: rgb(133, 109, 87);
+    font-size: 20px;
+}

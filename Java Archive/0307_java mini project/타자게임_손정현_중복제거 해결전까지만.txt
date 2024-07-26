@@ -1,0 +1,37 @@
+		Scanner in = new Scanner(System.in); // 입력받기 위한 스캐너 객체 소환...
+		Random rd = new Random(); // 랜덤 숫자 생성용 랜덤 캑체 소환...
+				
+		String[] words = new String[6]; // 제시할 단어 배열
+		words[0]="home";
+		words[1]="enter";
+		words[2]="make";
+		words[3]="travel";
+		words[4]="check";
+		words[5]="interval";
+	              
+	              
+	    System.out.println("지금부터 게임을 시작하지... (enter 누르시오.)");
+	    String start= in.nextLine();
+
+	    int point = 0;
+   	 	int cnt=0;
+   	 	for(int i=0; i<10; i++) { // 1라운드 시작
+   	 		String nowwor = words[rd.nextInt(5)]; // 컴퓨터가 랜덤단어 생성하고 저장하기
+   	 		System.out.println("제시어: "+nowwor); // 컴퓨터가 단어 제시하기
+   	 		String userword= in.nextLine(); // 유저가 단어 입력하기 
+   	 		
+	    	for(int j=0; j<nowwor.length(); j++) {  //index번호를 위한 for문
+	    		if(nowwor.charAt(j) == userword.charAt(j)) { //정답과 입력의 문자가 같을 시
+	    				cnt++;								 //카운팅해라
+	    			}
+	    	}
+   	 		if(nowwor.length()==cnt) {           // 정답의 문자길이 == 카운팅 한 개수
+   	 			point+=10;			        	//포인트 +10점
+   	 			System.out.println("정답");     //정답이라고 출력
+   	 			cnt=0;						  //중복방지를 위해 포인트 초기화
+   	 		} else if(nowwor.length()!=cnt) {  // 정답의 문자길이 == 카운팅 한 개수
+   	 			System.out.println("오답");    //오답이라고 출력
+   	 			cnt=0;						 //중복방지를 위해 포인트 초기화
+   	 		}
+      } // 모든 라운드(10라운드) 종료, for문 탈출
+      System.out.println("게임종료. "+point+"점입니다.");

@@ -1,0 +1,73 @@
+Scanner in = new Scanner(System.in); // 입력받기 위한 스캐너 소환...
+		 Random rd = new Random(); // 랜덤 숫자 생성용 랜덤 소환...
+			
+	              String[] words = new String[15]; // 제시할 단어 배열
+	              words[0]="home";
+	              words[1]="enter";
+	              words[2]="make";
+	              words[3]="travel";
+	              words[4]="check";
+	              words[5]="interval";
+	              words[6]="time";
+	              words[7]="winter";
+	              words[8]="spring";
+	              words[9]="shape";
+	              
+	              words[10]="machiavellianism";
+	              words[11]="hemidemisemiquaver";
+	              words[12]="hypervitaminosis";
+	              words[13]="uncopyrightable";
+	              words[14]="hippopotomonstrosesquippedaliophobia";
+	              
+	              
+	              System.out.println("지금부터 게임을 시작하지... (enter 누르시오.)");
+	              String start= in.nextLine();
+	              int point = 0;
+	              String hidden = words[rd.nextInt(9)];
+	              //System.out.println("히든: "+hidden);
+	              
+	              for(int i=0; i<10; i++) { // 1라운드 시작
+	            	 String nowwor = words[rd.nextInt(9)]; // 컴퓨터가 랜덤단어 생성하고 저장하기
+	                 System.out.println("제시어: "+nowwor); // 컴퓨터가 단어 제시하기
+	                 String userword= in.nextLine(); // 유저가 단어 입력하기 
+	            	  if(userword.equals(nowwor) && nowwor==hidden) { // 히든 정답인 경우
+	            		  point+=100;
+	            		  System.out.println("정답!!!");
+	            		  userword= in.nextLine();
+//	            		  point+=10;
+//	            		  System.out.println("정답");
+//	            		  userword= in.nextLine();
+	            		  
+	            	  }else if(userword.equals(nowwor)) {
+	            		  point+=10;
+	            		  System.out.println("정답");
+	            		  userword= in.nextLine();
+	            	  }else {
+	            		  System.out.println("오답");
+	            		  userword= in.nextLine();
+	            	  }
+	              } // 모든 라운드(10라운드) 종료, for문 탈출
+	              System.out.println("1단계 종료. "+point+"점입니다.");
+	              
+	              if(point>=50) {
+	            	     for(int i=0; i<5; i++) { // 1라운드 시작
+	    	            	 String nowwor = words[rd.nextInt(4)+10]; // 컴퓨터가 랜덤단어 생성하고 저장하기
+	    	                 System.out.println("제시어: "+nowwor); // 컴퓨터가 단어 제시하기
+	    	                 String userword= in.nextLine(); // 유저가 단어 입력하기 
+	    	            	if(userword.equals(nowwor)) {
+	    	            		  point+=10;
+	    	            		  System.out.println("정답");
+	    	            		  userword= in.nextLine();
+	    	            	  }else {
+	    	            		  System.out.println("오답");
+	    	            		  userword= in.nextLine();
+	    	            	  }
+	    	              } // 모든 라운드 종료, for문 탈출
+	              }else {
+	            	  System.out.println("총점: "+point+" 굿 바이...");
+		
+		
+	              }
+	              if(point>=50) {
+		              System.out.println("총점: "+point+" 굿 바이...");
+		              }

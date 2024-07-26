@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.son.dao.IF_MgrDAO"> 
+	<insert id="insert" parameterType="www.son.vo.MgrVO">
+		insert into mhr values (postNum.nextval, #{name}, #{category}, #{place}, #{bestMenu}, #{price})
+	</insert>
+	<select id="selectall" resultType="www.son.vo.MgrVO">
+		select * from mhr
+	</select>
+	<delete id="delete" parameterType="String" >
+		delete from mhr where num=#{num}
+	</delete>
+	<select id="selectone" resultType="www.son.vo.MgrVO">
+		select * from mhr where num=#{num}
+	</select>
+	<update id="update" parameterType="www.son.vo.MgrVO">
+		update mhr set name=#{name}, category=#{category}, place=#{place}, bestMenu=#{bestMenu}, price=#{price} where num=#{num}
+	</update>
+</mapper>

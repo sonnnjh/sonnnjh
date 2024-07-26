@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="www.son.dao.IF_TravelDAO"> <!-- namespace : 매퍼파일과 sql문이 있는 dao인터페이스를 연결한다.  -->
+	<insert id="insert" parameterType="www.son.vo.TravelVO"> <!--parameterType: 파라미터의 자료형을 적는다. -->
+		insert into contry values (#{contry}, #{days}, #{charact})
+	</insert>
+
+</mapper>

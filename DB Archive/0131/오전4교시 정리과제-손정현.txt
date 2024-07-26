@@ -1,0 +1,58 @@
+## 오후는 문제 해결 능력을 연습합니다.
+지금껏 알고 있는 지식 + 새로운 지식의 조합입니다.
+
+지금껏 알고 있는 지식으로 새로운 지식을 검색하여 찾아 내어 문제를 해결하는 능동적인 능력입니다. 
+
+
+-- 테이블구축 - 쿼리를 복사해서 테이블을 구축하세요.
+create table member1(
+m_no number constraint member_pk primary key,
+m_id varchar2(8) constraint member_unique unique,
+m_name varchar2(12),
+m_age number constraint member_m_age_chk check(m_age between 1 and 100),
+m_point number default 100,
+m_indate timestamp default sysdate);
+
+1. 포인트의 기본값을 1000으로 변경하시오.
+제약조건수정>DDL>수정>modify>명령어alter 
+(답) alter table member1
+     modify m_point default 1000;
+
+2. 나이가 많은 순서대로 정렬하여 출력하시오.
+출력>DML>select >오름차순>asc
+(답) select * 
+     from member1
+     where m_age 
+     order by m_no asc;
+
+
+3. 포인트가 200이상 1000이하인 사람의 이름만 출력하시오.
+출력>DML>select 이름(속성명)>where조건 >between
+(답) select m_name
+     from member1
+     where m_point between 200 and 1000;
+
+
+4. 아이디가  abc이면서 이름이 홍길동인 사람의 이름, 나이, 포인트를 출력하시오.
+출력>DML>select (이름, 나이, 포인트) >where 조건(아이디abc,이름 홍길동)
+(답) select m_name, m_age, m_point
+     from member1
+     where m_id='abc',m_name='홍길동';
+
+
+
+5. 모든 사람의 가입날짜를 출력하시오, 가입날짜는 indate날짜는 등록일이고 등록일 부터 3개월 뒤가 가입날짜이다.
+출력>DML>select 가입날짜(등록일 부터 3개월 뒤가 가입날짜) 속성명
+(답) select m_indate sysdate +(interval '3' month)
+     from member1
+     
+
+6. abc 아이디를 가진 사람이 포인트 1000을 차감했다. 
+튜플>차감=수정>update>where조건 (abc 아이디를 가진 사람)
+(답) update member1
+     set m_point=m_point-1000
+     where m_id ='abc';
+
+7. 나이가 많은 사람부터 정렬하고 나이가 같은 경우는 포인트가 낮은 사람부터 오름차순으로 정렬하시오.
+출력>1.나이가 많은 사람부터 정렬 - 나이 오름차순 정렬 
+       2. 나이가 같은 경우 포인트가 낮은 사람부터 오름차순 정렬 - 포인트 오림차순 정렬 >조건 where 나이가 같음

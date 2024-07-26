@@ -1,0 +1,83 @@
+body{
+    background-color: #f7f3ec;
+    height: 900px;
+}
+main{
+    background-color: #f7f3ec;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+#brand_name{
+    color: rgb(133, 109, 87);
+    margin-left: 30px;
+    font-family: Pretendard ExtraBold;
+    font-size: 30px;
+}
+.nav-link{
+    color: rgb(133, 109, 87);
+    margin-left: 10px;
+    font-family: Pretendard ExtraBold;
+    font-size: 20px;
+}
+.nav-link:hover{
+    background-color: rgb(210, 200, 188);
+    border-radius: 4px
+}
+#title{
+    font-family: Pretendard ExtraBold;
+    font-size: 60%;
+    text-align: center;
+    padding-bottom: 60px;
+}
+#h2{
+    color: rgb(107, 92, 73);
+}
+.item1{
+    float: left;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 900px;
+}
+.item2{
+    float: left;
+    border: 2px solid rgb(210, 200, 188);
+    width: 40%;
+    height: 900px;
+}
+#search{
+    width: 30%;
+}
+.container{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 250px;
+    grid-gap: 7rem;
+    margin-top: 200px;
+    
+}
+.image{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+figcaption{
+    padding-top: 30px;
+
+}
+.dog_figure{
+    font-family: Pretendard SemiBold;
+}
+.dog_figure b{
+    font-family: Pretendard ExtraBold;
+}
+.button{
+    margin-top: 20px;
+}
+

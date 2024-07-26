@@ -1,0 +1,34 @@
+insert into member1 values(
+1,'aaa','홍길동',45,1000,default);
+
+insert into member1 values(
+2,'bbb','일지수',40,100,default);
+
+insert into member1 values(
+3,'ccc','남이지',18,975,default);
+
+insert into member1 values(
+4,'ddd','박진수',30,776,default);
+
+select * from member1;
+
+select m_id,m_name from member1;
+
+4. select * from member1 where m_age >=40;
+5. select m_id,m_name,m_point from member1 where m_point >=900;
+6. select * from member1 where m_no =3;
+7. select m_age+(1) from member1;
+8. select m_age,m_name from member1 where m_age <20;
+9. select m_point+(10) from member1 where m_age >= 30;
+10. update member1 set m_age = 49 where m_name = '홍길수';
+11. delete from member1 where m_id='ddd';
+12. select * from member1 where m_point between 700 and 1100;
+
+13.  ALTER TABLE 테이블명 MODIFY(컬럼명 테이타타입(사이즈));
+alter table member1 modify (m_name varchar2(10));
+14.
+15.ALTER TABLE 테이블명 DROP COLUMN 컬럼명
+alter table member1 drop column m_age;
+16. insert into member1 values (
+5,'abcd','홍리자',1020, sysdate-(interval '1' year));
+17. 

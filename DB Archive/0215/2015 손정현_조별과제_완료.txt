@@ -1,0 +1,106 @@
+[oracle]
+member1 table에서 포인트가 많은 3번째에서 5번째 고객 출력
+포인트가 동일하면 id가 높은 것이 우선
+
+[MY SQL]
+user table의 포인트가 많은 3번째에서 5번째 고객 출력
+포인트가 동일하면 no 가 높은 것이 우선.
+
+ 
+[ORACLE]
+-- 최대값
+SELECT MAX(칼럼명) 
+FROM 테이블명
+
+-- 두번째 최대값
+SELECT MAX(SAL) 
+FROM 테이블명
+WHERE 칼럼명 NOT IN (SELECT MAX(칼럼명) FROM 테이블명)
+
+-- N번째 최대값
+SELECT 컬럼명 
+FROM ( SELECT ROWNUM AS RN, 칼럼명
+           FROM  ( SELECT 칼럼명
+                   	FROM 테이블명
+		   WHERE 칼럼명 IS NOT NULL -- NULL 제외
+		   ORDER BY 컬럼명 DESC   )
+	)
+ WHERE RN = 3
+
+답)
+SELECT point
+FROM
+(
+select ROWNUM as rn,POINT 
+from (select point from member1 where point is not null order by point desc)
+)
+WHERE rn between 3 and 5;
+
+진짜답)
+SELECT point, id
+FROM
+(
+select ROWNUM as rn,x.POINT, x.id
+FROM (select * from member1 order by point,id desc) x)
+WHERE rn between 3 and 5;
+60	5
+100	8
+100	1
+
+-참고-
+SELECT point, id
+FROM
+(
+select ROWNUM as rn, x.point, x.id
+FROM (select * from member1 order by point,id desc) x) ;
+10	3
+30	7
+60	5
+100	8
+100	1
+200	2
+6000	6
+10000	4
+
+참고링크:
+https://wakestand.tistory.com/295
+------------------------------------------------------------------------------------------------
+[MY SQL]
+SELECT *FROM user LIMIT 3 OFFSET 2
+--3에서 부터 시작해서 3개 -> 3,4,5
+
+
+답)
+select distinct point
+FROM user order by point desc LIMIT 3 OFFSET 2;
+179	6
+180	5
+180	3
+
+-참고-
+SELECT point
+FROM user order by point desc  ;
+
+2100
+1100
+200
+199
+180
+179
+160
+130
+
+no가 높은 것부터 출력하는 것
+SELECT point, no
+FROM user order by point, no desc  ;
+130	1
+160	2
+179	6
+180	5
+180	3
+199	8
+200	4
+1100	9
+2100	10
+
+

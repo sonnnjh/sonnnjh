@@ -1,0 +1,90 @@
+풀이 확인 미션
+
+1. 각 클래스의 맴버변수와 메서드를 확인하시오.
+(1) Main class
+    -맴버변수 : 없다
+    -메서드 : main() -프로그램 시작의 기능
+                FirstMenu() -생성자메서드
+(2) IdeaMain
+   -맴버변수 : in - 스캐너 번호를 입력받는다
+                 ideaList - 게시한 아이디어를 저장하기 위한 배열변수
+                 choiceList - ChoiceIdea class를 넘겨받아 저장하기 위한 저장공간
+   -메서드 : menu() - 보기 선택의 기능
+               getIdeaList() - 호출하는 곳에 ideaList배열의 주소값을 리턴하는 기능
+               add() - 아이디어를 게시하는 기능
+               mod() - 게시한 아이디어를 수정하는 기능
+                        - 채택한 아이디어인지 판별하여 채택하지 않은 아이디어라면 수정을 받음  
+               allList() - 게시한 아이디어를 전체보는 기능
+(3) FirstMenu
+   -맴버변수 : in - 스캐너 번호를 입력받는다
+                 chMenu - ChoiceMenu class를 객체로 생성함 (모든 클래스 통틀어 1번)
+                 ideaMain - IdeaMain class를 객체로 생성함 (모든 클래스 통틀어 1번)
+                 chIdea - ChoiceIdea class를 객체로 생성하고 매개변수로 위에 생성한 ideaMain(IdeaMain class 객체)을 호출한 곳으로 넘겨준다.
+   -메서드 : FirstMenu() - 생성자 메서드의 기능, 클래스 실행과 동시에 실행된다. 
+               menu() - 보기 선택의 기능
+(4) ChoiceIdea
+  -맴버변수 : in - 스캐너 번호를 입력받는다
+                choiceList - OneIdea class를 객체로 생성함(모든 클래스 통틀어 1번)
+                ideaMain - IdeaMain class를 넘겨받아 저장하기 위한 저장공간
+  -메서드 : ChoiceIdea() - 생성자 메서드의 기능, 클래스 실행과 동시에 실행된다.
+              menu() - 보기 선택의 기능
+              ideaList() - getIdeaList를 호출하여 ideaList []의 주소값을 넘겨받음. 동시에 저장하고 모든 배열의 값을 출력하는 기능
+                          - 번호를 선택하면 채택한 아이디어를 저장하는 reList에 0번 인덱스번호부터 값이 저장된다.
+              chkIdea()- 매개변수로 String을 넘겨받으면 게시한 아이디어의 제목과 같은지 판별하고 같으면 true 리턴, 맞지않으면 false를 리턴하는 기능
+(5) OneIdea
+  -맴버변수 : title - 아이디어 게시글의 구조가 될 아이디어 제목
+                 pass - 아이디어 게시글의 구조가 될 아이디어 비밀번호
+                 wr - 아이디어 게시글의 구조가 될 아이디어 작성자
+  -메서드 : getTitle () - 호출한 곳에 title을 리턴하는 기능 / prt()가 아닌 이유는 값의 변화를 잘 반영???????일 듯 하다.....
+              getWr() - 호출한 곳에 wr을 리턴하는 기능 / 
+
+2. 시작클래스 이름은?
+  -Main class
+
+3. FirstMenu객체는 어떤 클래스에서 만들고 총 몇개를 만드는가?
+  - 1개
+   Main class에서 new FirstMenu() 로 만들음
+
+4. FirstMenu 클래스의 맴버 변수를 분석하여
+   각 클래스 별로 객체를 몇개 반드는가? 몇개를 만들어야 하는가?
+
+   스캐너를 제외하고 객체생성을 말하자면,
+   IdeaMain class에서 2번의 객체생성      (1)OneIdea[] ideaList = new OneIdea[5] 
+                                                    (2)OneIdea newtemp = new OneIdea() >> 이건 입력할때마다 생성과 소멸을 반복한다(소멸은 완전히 사라지는 건지 heap에 존재하는지는 불확실..)
+   ChoiceIdea class에서 1번의 객체 생성   (1)choiceList - OneIdea class를 객체로 생성함(모든 클래스 통틀어 1번) 
+   FirstMenu class에서 2번의 객체 생성    (1)chMenu - ChoiceMenu class를 객체로 생성함 (모든 클래스 통틀어 1번)
+                                                    (2)ideaMain - IdeaMain class를 객체로 생성함 (모든 클래스 통틀어 1번)
+
+5. 각 클래스 별 의존 관계를 분석하시오.
+   IdeaMain class는 OneIdea class를 의존한다. ChoiceMenu class도 의존한다.
+   ChoiceIdea class OneIdea class를 의존한다.IdeaMain class도 의존한다.
+   FirstMenu class는 IdeaMain class를 의존한다.ChoiceMenu class도 의존한다. ChoiceIdea class도 의존한다.
+
+
+6. IdeaMain클래스와  ChoiceIdea클래스는 서로 의존한다.
+   의존한다는 것은 객체의 주소를 알아야 한다. 객체의 주소를 주입하는 것을 소스에서 찾아서 설명하세요.
+  	
+ChoiceIdea class의 생성자는 IdeaMain을 넘겨받는다.
+
+		IdeaMain ideaMain = null;
+	public ChoiceIdea(IdeaMain idea)
+		ideaMain=idea;
+
+---------------------------------------------------------------------
+
+IdeaMain class의 메뉴는 ChoiceIdea을 넘겨받는다.
+
+		ChoiceIdea choicIdea = null;
+		public void menu(ChoiceIdea c) {
+			choicIdea=c;
+
+7. ChoceIdea 클래스의 public boolean chkIdea(String t) 메서드를 분석하고 필요한 이유를 설명하시오.
+IdeaMain class에서 chkIdea ()를 실행할 때 수정할 아이디어의 제목과 채택한 아이디어의 제목이 같은지 판별한다.
+같으면 채택한 아이디어이기 때문에 true를 리턴하여 "수정불가"문구가 뜨게하고
+다르면 채택한 아이디어가 아니기 때문에 false를 리턴하여 수정할 title를 입력받는다.
+
+8. ChoiceIdea클래스의 public void ideaList()  메서드를 분석하시오.
+ideaList의 주소를 위의 메서드에서 넘겨받아 출력한다.
+출력하고 채택할 번호를 선택하게 한다.
+선택한 번호가 배열의 길이 즉 인덱스 번호를 벗어나지 않다면
+선택받은 번호를 choiceList [] 의 빈칸에 저장한다.

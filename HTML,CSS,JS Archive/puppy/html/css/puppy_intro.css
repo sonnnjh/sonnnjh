@@ -1,0 +1,79 @@
+main{
+    /* background-color: rgb(210, 200, 188); */
+    background-color: #f7f3ec;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+#brand_name{
+    color: rgb(133, 109, 87);
+    margin-left: 30px;
+    font-family: Pretendard ExtraBold;
+    font-size: 30px;
+}
+.nav-link{
+    color: rgb(133, 109, 87);
+    margin-left: 10px;
+    font-family: Pretendard ExtraBold;
+    font-size: 20px;
+}
+.nav-link:hover{
+    background-color: rgb(210, 200, 188);
+    border-radius: 4px
+}
+#main_intro1{
+    display: grid;
+    padding-left: 10%;
+    /* border: 1px solid black; */
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 150px;
+    grid-gap: 4rem;
+    grid-template-areas: 'a d'
+                        'b d'   
+                        'c d';
+}
+#main_intro2{
+    background-color: #fafaf8;
+    
+    align-items: center;
+    /* border: 1px solid black; */
+}
+#main_1{
+    grid-area: a;
+}
+#main_2{
+    grid-area: b;
+}
+#main_3{
+    grid-area: c;
+}
+#img{
+    grid-area: d;
+    width: 90%;
+    padding-top: 20%;
+}
+#h h2{
+    color: rgb(133, 109, 87);
+    font-family: Pretendard ExtraBold;
+    font-size: 40px;
+    text-align: center;
+    padding-bottom: 60px;
+    /* border: 1px solid black; */
+}
+.main_h, #main_intro2 b{
+    color: rgb(133, 109, 87);
+    margin-left: 10px;
+    font-family: Pretendard ExtraBold;
+    font-size: 20px;
+    /* border: 1px solid black; */
+}
+#main_intro2 b{
+    padding-left: 10%;
+}
+.main_text, #main_intro2 span{
+    font-family: Pretendard SemiBold;
+    color: rgb(133, 109, 87);
+    margin-left: 10px;
+    font-size: 20px;
+    /* border: 1px solid black; */
+}

@@ -1,0 +1,166 @@
+1. 100부터 999까지의 숫자중에서 홀수만 출력하시오.
+
+for (int i=100; i<1000; i++) {
+	if (i%2 !=0) {
+		System.out.println(i);
+	}
+}
+
+
+
+2. 1부터 100까지 숫자중에서 홀수의 총합을 구하시오.
+
+int sum=0;
+for (int i=1; i<=100; i++) {
+	if (i%2 != 0) {
+		sum+=i;
+	}
+}
+
+3. 다음과 같이 출력하시오   10  9  8  7  6  5  4  3  2  1
+
+for (int i=10; i>=1; i--) {
+	System.out.print(i + " ");
+}
+
+4. 범인 숫자 구하기.. 
+  범인은 100부터 999까지 숫자중에 여러명이다. 
+  범인의 특징은 숫자의 각자릿수를 더한 값이 짝수이다.  범인의 숫자를 모두 찾으시오.
+
+for (int i=100; i<1000; i++) {
+	int i2=(i/100)+(i%100/10)+(i%10);
+	if (i2%2==0) {
+		System.out.println(i);
+			
+					
+	}
+}
+
+
+5. 키보드로 숫자를 입력받아 홀짝인지 판별하시오.
+
+Scanner in = new Scanner (System.in);
+System.out.println("숫자를 하나 입력하세요.");
+int num = in.nextInt();
+in.nextLine();
+System.out.println(num+"을 입력하였습니다.");
+if (num%2==0) {
+	System.out.println("짝수입니다.");
+}else {
+	System.out.println("홀수입니다.");
+}
+
+6. 키보드로 숫자 2개를 입력받아 서로의 차를 구하는 프로그램을 작성하시오.
+
+Scanner in = new Scanner (System.in);
+System.out.println("숫자를 하나 입력하시오.");
+int no1=in.nextInt();
+in.nextLine();
+System.out.println("숫자를 하나 더 입력하시오.");
+int no2=in.nextInt();
+in.nextLine();
+System.out.println("입력하신 두 숫자의 차입니다.");
+System.out.println(no1-no2);
+
+7. 키보드로 숫자를 입력받고 숫자의 자릿수에 4가 하나라도 있다면, 잘못된 숫자라고 판별하시오.
+
+Scanner in = new Scanner (System.in);
+System.out.println("숫자 1000 미만의 숫자를 하나 입력하시오.");
+int no = in.nextInt();
+in.nextLine();
+if (no<1000) {
+	if ((no/100 ==4) || (no%100/10==4) || (no%10 ==4)) {
+		System.out.println("잘못된 숫자입니다.");
+	}else {
+		System.out.println(no+"을 입력하였습니다.");
+	}
+
+}
+
+8. 키보드로 입력받아 업다운 게임하기
+   sysout("게임을 시작합니다");
+   int com = 45;   // 컴퓨터는 45라고 기준 숫자를 미리 정의한다.
+   Scanner in = new Scanner(System.in);
+   int nowNum = in.nextInt();
+   sysout("1- 100사이의 숫자를 입력하세요 > ");
+
+  위 코드를 이용하여 게임을 완성하세요.
+
+
+//		   System.out.println("게임을 시작합니다");
+//		   int com = 45;   // 컴퓨터는 45라고 기준 숫자를 미리 정의한다.
+//		   Scanner in = new Scanner(System.in);
+//		   
+//		   System.out.println("1~100사이의 숫자를 입력하세요");
+//		   int nowNum = in.nextInt();
+//		   in.nextLine();
+//		   if (nowNum >45 || nowNum<45) {
+//			   System.out.println("땡!");
+//		   } else if (nowNum==45) {
+//			   System.out.println("정답!");
+//		   }
+		  ->한 번 틀리니까 끝나버림
+//		   for (nowNum=1; nowNum<=100;    ) {
+//			   if(nowNum>45 || nowNum<45) {
+//				   System.out.println("땡!");
+//			   }else if (nowNum==45) {
+//				   System.out.println("딩동댕!");
+//			   }else if (nowNum>100) {
+//				   System.out.println("1~100사이의 숫자를 입력하세요");
+//				   
+//			   }else if (nowNum<1) {
+//				   System.out.println("1~100사이의 숫자를 입력하세요");
+//			   }
+//		   }
+		   ->무한로프 됨
+//		   for (com=1; com<=100;    ) {
+//			   if(com!=45) {
+//				   
+//				   int nowNum = in.nextInt();
+//				   in.nextLine();
+//				   System.out.println("다시 입력하세요");
+//				   if (nowNum == 45) {
+//			    	   System.out.println("정답");
+//			       }
+//				   
+//			   }
+//		   		
+//			   
+//		   }
+게임을 시작합니다
+1~100사이의 숫자를 입력하세요
+1
+다시 입력하세요
+5
+다시 입력하세요
+6
+다시 입력하세요
+0
+다시 입력하세요
+99
+다시 입력하세요
+45
+다시 입력하세요 --> 왜나오는지모름
+정답
+
+
+
+
+9.  String test = "abcdeabce";
+    for(int i=0; i < 9; i ++){
+	char aaa = test.charAt(i);
+	sysout(aaa);
+    }
+
+   위 코드를 분석하여 a문자열에 a가 몇개 있는지 구하는 프로그램을 작성하세요
+
+
+10. 가장 긴 터널의 알파벳 이름과 숫자를 찾으세요
+ String ttt ="aabbbcccaaaaddbbbaaaaa";
+
+
+11.  String ttt ="aabbbcccaaaaddbbbaaaaa";
+   압축하시오. 압축 하는 방법 a2b3c3a4d2b3a5
+
+
+   

@@ -1,0 +1,305 @@
+create table user(
+no int primary key auto_increment,
+id varchar(6) unique key,
+pwd varchar(8),
+name varchar(10),
+age int,
+grade varchar(1),
+point int
+);
+
+​
+
+insert into user (id,pwd,name,age,grade,point) values ('a','1111','홍길동',15,'A',100);
+insert into user values (default, 'b','1111','김길동',25,'B',1000);
+insert into user values (default, 'c','1111','김을수',35,'C',99);
+insert into user values (default, 'd','1111','삼길동',12,'D',86);
+insert into user values (default, 'e','1111','사길동',18,'A',79);
+insert into user values (default, 'f','1111','오길동',55,'A',80);
+insert into user values (default, 'g','1111','육길동',29,'B',100);
+insert into user values (default, 'h','1111','칠길동',31,'C',80);
+insert into user values (default, 'i','1111','팔길동',42,'A',60);
+insert into user values (default, 'j','1111','구길동',10,'D',30);
+_____________________
+
+​
+
+​
+
+
+1. A등급의 고객의 아이디와 이름과 포인트를 출력하시오.
+출력하라->DML->SELECT
+SELECT 아이디, 이름, 포인트 -> id, name, point
+FROM user
+WHERE A등급 고객 -> grade ='A'
+GROUP BY HAVING
+ORDER BY
+
+답)
+select id, name, point
+from user
+where grade = 'A' ;
+증빙)
+a	홍길동	100
+e	사길동	79
+f	오길동	80
+i	팔길동	60
+
+
+
+
+
+
+
+
+2. B 등급의 고객의 아이디와 이름을 출력하시오. 아이디는
+화면에 고객id 라고 출력하시오.
+
+출력하라->DML->SELECT
+SELECT 아이디->고객id로 출력->as별칭, 이름
+FROM user
+WHERE B등급
+GROUP BY HAVING
+ORDER BY
+
+답)
+select name, id 고객id
+from user
+where grade= 'b';
+증빙)
+김길동	b
+육길동	g
+
+
+
+
+
+
+3. d라는 사람이 퇴사를 하였습니다. 정보를 삭제하세요
+삭제해라->DML->delete 칼럼삭제 -> delete from 테이블명 where id='d'
+답)
+delete from user where id='d';
+증빙)
+1	a	1111	홍길동	15	A	100
+2	b	1111	김길동	25	B	1000
+3	c	1111	김을수	35	C	99
+5	e	1111	사길동	18	A	79
+6	f	1111	오길동	55	A	80
+7	g	1111	육길동	29	B	100
+8	h	1111	칠길동	31	C	80
+9	i	1111	팔길동	42	A	60
+10	j	1111	구길동	10	D	30
+-> 삼길동이 삭제된 것을 알 수 있음.
+
+
+
+
+
+
+
+4. 김을수라는 사람이 D등급이 되었습니다. 이를 반영하세요
+
+반영하라->DML->UPDATE-> UPDATE 테이블명 SET 속성명=변경값 WHERE  이름이 김을수
+답)
+update user set grade='D' where name='김을수';
+증빙)
+8	c	1111	김을수	35	D	99
+->김을수의 등급이 바뀐 것을 알 수 있음.
+
+
+
+
+
+
+
+5. 홍길동의 나이가 18살 포인트가 2000포인트로 변경되었습니다.
+변경되다->DML->UPDATE->UPDATE 테이블명 SET 속성명=변경값 WHERE 
+답)
+update user set age='18', point='2000' where name = '홍길동';
+증빙)
+10	a	1111	홍길동	18	A	2000
+
+
+
+
+
+
+
+6. 칠길동의 고객이 비밀번호를 분실하였다고 합니다. 비밀번호를
+0000 으로 초기화 시켜 주세요
+
+변경되다->DML->UPDATE->UPDATE 테이블명 SET 속성명=변경값 WHERE 
+update user set pwd = '0000' where name='칠길동';
+3	h	0000	칠길동	31	C	80
+
+
+
+
+
+
+
+Level up
+
+7. 홍길동과 김길동의 나이를 30으로 변경하세요. 단 쿼리문은
+한개만 작성해야 합니다.
+
+변경되다->DML->UPDATE->UPDATE 테이블명 SET 속성명=변경값 WHERE 
+답)
+UPDATE user SET age=30 where name in ('홍길동', '김길동');
+증빙)
+9	b	1111	김길동	30	B	1100
+10	a	1111	홍길동	30	A	2100
+
+
+
+
+
+
+
+
+8. 포인트가 100 미만인 사람들의 이름과 아이디를 출력하세요
+
+출력하다->DML->SELECT->이름, 아이디 
+포인트 100 미만->WHERE조건
+답)
+SELECT name, id 
+FROM user
+WHERE point<100;
+증빙)
+구길동	j
+팔길동	i
+칠길동	h
+오길동	f
+사길동	e
+김을수	c
+----------------point참고--
+구길동	j	30
+팔길동	i	60
+칠길동	h	80
+오길동	f	80
+사길동	e	79
+김을수	c	99
+
+
+
+
+
+9. 포인트가 50에서 100 사이인 사람들의 모든 정보를 출력하세요
+
+출력하다->DML->SELECT->모든 정보->*
+포인트가 50에서 100 사이 ->WHERE조건 ->beteween A and b
+답)
+SELECT *
+FROM user
+WHERE point between 50 and 100;
+증빙)
+2	i	1111	팔길동	42	A	60
+3	h	0000	칠길동	31	C	80
+4	g	1111	육길동	29	B	100
+5	f	1111	오길동	55	A	80
+6	e	1111	사길동	18	A	79
+8	c	1111	김을수	35	D	99
+
+
+
+
+
+
+
+
+
+
+
+
+10. A 등급의 모든 고객들의 포인트를 100씩 증가 시키세요
+
+변경되다->DML->UPDATE->UPDATE 테이블명 SET 속성명=변경값 WHERE 
+답)
+update user set point=(point+100) ;
+증빙)
+1	j	1111	구길동	10	D	130
+2	i	1111	팔길동	42	A	160
+3	h	0000	칠길동	31	C	180
+4	g	1111	육길동	29	B	200
+5	f	1111	오길동	55	A	180
+6	e	1111	사길동	18	A	179
+8	c	1111	김을수	35	D	199
+9	b	1111	김길동	25	B	1100
+10	a	1111	홍길동	18	A	2100
+
+11. 김씨 성을 가진 사람들의 이름과 나이를 출력하세요.
+
+​출력하세요->DML->SELECT->이름, 나이
+김씨성을 가진-> '김%'-> 같이 사용하는 제약조건->LIKE
+답)
+SELECT name, age
+FROM user
+WHERE name like '김%';
+증빙)
+김을수	35
+김길동	30
+
+​
+
+​
+
+---- 좌절금지 문제
+
+​
+
+12. insert into user values ('abcdefghi','1111','이미미',45,'A',700);
+
+12번 쿼리를 실행하면 아이디가 짤리거나 에러발생한다.
+
+그런데 이미미 고객은 반드시 저 아이디를 사용한다고 한다.
+
+이미미 고객의 아이디를 저장 할 수 있도록 조치하세요~
+
+
+(1)-삽입하는 데이터의 개수가 테이블의 컬럼의 개수가 다르다. -> no값을 임의로 추가한다.->dafault추가
+(2)-아이디의 바이트 길이가 속성의 값과 다르므로 속성의 값을 바꾼다.
+    varchar(9)로 바꾸면 9자리인 이미미의 아이디를 넣을 수 있다. 
+(3)-DDL->MODIFY
+
+순서(1)
+ALTER TABLE user MODIFY id varchar(9);
+(1-증빙)
+no	int	NO	PRI		auto_increment
+id	varchar(9)	YES	UNI		
+pwd	varchar(8)	YES			
+name	varchar(10)	YES			
+age	int	YES			
+grade	varchar(1)	YES			
+point	int	YES			
+순서(2)
+insert into user values (default, 'abcdefghi','1111','이미미',45,'A',700);
+(2-증빙)
+1	j	1111	구길동	10	D	30
+2	i	1111	팔길동	42	A	60
+3	h	0000	칠길동	31	C	80
+4	g	1111	육길동	29	B	100
+5	f	1111	오길동	55	A	80
+6	e	1111	사길동	18	A	79
+8	c	1111	김을수	35	D	99
+9	b	1111	김길동	30	B	1000
+10	a	1111	홍길동	30	A	2000
+11	abcdefghi	1111	이미미	45	A	700
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
